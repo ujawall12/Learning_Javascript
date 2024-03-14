@@ -65,12 +65,83 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
+
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+/////////////////////////////////////////////////
+
+
+/* Slice method is used to extract a part of an array and returns it as a new array */
+
+let arr = ['a' , 'b' , 'c' , 'd' , 'e'];
+
+console.log(arr.slice(2,4));
+
+/* Splice method works similarly to slice method but it also changes the original array and returns the removed elements as an array. It also takes start and end parameter */
+
+// console.log(arr.splice(2,1)); // Returns ['c']
+console.log(arr);
+
+/* Reverse method reverses the original array . It mutates the original array */
+// console.log(arr.reverse());
+console.log(arr);
+
+/* Concat method is used to merge two or more arrays */
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+const newarr = arr.concat(arr2);
+console.log(newarr);
+
+/* Join method is used to join all the elements of an array into a string */
+console.log(newarr.join(' - '));
+
+/* At method is used to access the element at the specified index
+* We can also use negative index which will start the array from the end
+*/
+console.log(newarr.at(0));
+console.log(arr.at(-1)); // Last element
+
+
+/*
+* Looping Arrays: forEach
+* forEach is a higher order functions that takes a callback function which defines what should be done with each element. And the parameter in the call back function is the element of the array in the ith iteration.
+* It can take three parameters. The first is the element itself and the second is the index of the element and the third is the array itself.
+* We cannot use break and continue keywords in the forEach loop.
+ */
+
+const accountMovements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+movements.forEach((element) => {
+  if (element > 0) {
+    console.log(`You deposited ${element}`);
+  } else {
+    console.log(`You withdrew ${Math.abs(element)}`);
+  }
+});
+
+/*
+* forEach in maps and sets.
+* This also takes a callback function.
+* There are three parameters in the callback function. The first is the value of the element and the second is the key of the element and the third is the map itself.
+ */
+
 const currencies = new Map([
   ['USD', 'United States dollar'],
   ['EUR', 'Euro'],
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+currencies.forEach((value, key, map) => {
+  console.log(`${key}: ${value}`);
+});
 
-/////////////////////////////////////////////////
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+currenciesUnique.forEach((value, _, map) => { // In sets there is no key. _ is used to ignore the key. _ is not a syntax, we can use anything. Its just a convention.
+  console.log(`${value}: ${value}`);
+});
+
+
+
+
+
+
